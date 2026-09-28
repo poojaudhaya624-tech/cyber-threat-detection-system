@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cyber Threat Analytics</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#001B5E,#003C9E,#005BD4);
+    color:white;
+}
+.navbar{
+    background:#001845;
+    padding:15px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:2px solid #00D9FF;
+}
+
+.navbar a{
+    color:#00E5FF;
+    text-decoration:none;
+    margin-left:20px;
+    font-weight:bold;
+}
+.logo img{
+    width:45px;
+    height:45px;
+    border-radius:8px;
+}
+
+
+.container{
+    width:90%;
+    margin:40px auto;
+}
+
+h1{
+    text-align:center;
+    color:#00CFFF;
+    margin-bottom:30px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.card{
+    background:#102B5B;
+    border:2px solid #00CFFF;
+    border-radius:15px;
+    text-align:center;
+    padding:25px;
+}
+
+.card h2{
+    color:#00CFFF;
+    margin-bottom:10px;
+}
+
+.card p{
+    font-size:35px;
+    font-weight:bold;
+}
+
+.chart-box{
+    background:#102B5B;
+    margin-top:40px;
+    padding:30px;
+    border-radius:15px;
+    border:2px solid #00CFFF;
+}
+
+.bar{
+    height:35px;
+    margin:18px 0;
+    border-radius:10px;
+    color:white;
+    padding-left:15px;
+    display:flex;
+    align-items:center;
+    font-weight:bold;
+}
+
+.high{background:#ff3b3b;}
+.medium{background:#ff9800;}
+.safe{background:#00c853;}
+.total{background:#0099ff;}
+
+.footer{
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+    background:#001845;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="logo">Cyber Threat Detector</div>
+
+    <div>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/history">History</a>
+        <a href="/analytics">Analytics</a>
+        <a href="/admin">Admin</a>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<div class="container">
+
+    <h1>Cyber Threat Analytics Dashboard</h1>
+
+    <div class="cards">
+
+        <div class="card">
+            <h2>Total Scans</h2>
+            <p>{{ total_scans }}</p>
+        </div>
+
+        <div class="card">
+            <h2>High Risk</h2>
+            <p>{{ high_count }}</p>
+        </div>
+
+        <div class="card">
+            <h2>Medium Risk</h2>
+            <p>{{ medium_count }}</p>
+        </div>
+
+        <div class="card">
+            <h2>Safe Results</h2>
+            <p>{{ safe_count }}</p>
+        </div>
+<h2 style="color:#00d9ff; text-align:center;">Threat Analysis</h2>
+
+<div style="width:90%; margin:auto;">
+    <p>🔴 High Risk ({{ high_count }})</p>
+    <div style="background:#222; border-radius:10px;">
+        <div style="width:80%; background:red; height:20px; border-radius:10px;"></div>
+    </div>
+
+    <p>🟡 Medium Risk ({{ medium_count }})</p>
+    <div style="background:#222; border-radius:10px;">
+        <div style="width:60%; background:orange; height:20px; border-radius:10px;"></div>
+    </div>
+
+    <p>🟢 Safe Results ({{ safe_count }})</p>
+    <div style="background:#222; border-radius:10px;">
+        <div style="width:90%; background:limegreen; height:20px; border-radius:10px;"></div>
+    </div>
+
+    </div>
+
+    <div class="chart-box">
+
+        <h2 style="color:#00CFFF;margin-bottom:20px;">Threat Analysis</h2>
+
+        <div class="bar total" style="width:100%;">
+            Total Scans : {{ total_scans }}
+        </div>
+
+        <div class="bar high" style="width:90%;">
+            High Risk : {{ high_count }}
+        </div>
+
+        <div class="bar medium" style="width:70%;">
+            Medium Risk : {{ medium_count }}
+        </div>
+
+        <div class="bar safe" style="width:60%;">
+            Safe Results : {{ safe_count }}
+        </div>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    © 2026 AI Powered Cyber Threat Detection and Response System | Developed by Poojalakshmi U
+</div>
+
+</body>
+</html>

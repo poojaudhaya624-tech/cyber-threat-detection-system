@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Scan History</title>
+    <style>
+        body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#001B5E,#003C9E,#005BD4);
+    color:white;
+}
+/* Navbar */
+.navbar{
+    background:#001845;
+    padding:15px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:2px solid #00D9FF;
+}
+
+.navbar a{
+    color:#00E5FF;
+    text-decoration:none;
+    margin-left:20px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#00d9ff;
+}
+
+/* Title */
+h2{
+    text-align:center;
+    color:#00d9ff;
+    margin:30px 0;
+    font-size:34px;
+}
+
+/* Card */
+.container{
+    width:92%;
+    margin:auto;
+    background:rgba(255,255,255,0.08);
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 0 20px rgba(0,217,255,0.3);
+}
+
+/* Table */
+table{
+    width:100%;
+    border-collapse:collapse;
+    border-radius:12px;
+    overflow:hidden;
+}
+
+th{
+    background:#00bfff;
+    color:#001845;
+    padding:14px;
+}
+
+td{
+    padding:12px;
+    border-bottom:1px solid rgba(255,255,255,0.15);
+    text-align:center;
+}
+
+tr:nth-child(even){
+    background:rgba(0,191,255,0.08);
+}
+
+tr:hover{
+    background:rgba(0,217,255,0.15);
+}
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/history">History</a>
+    <a href="/analytics">Analytics</a>
+    <a href="/admin">Admin</a>
+    <a href="/logout">Logout</a>
+</nav>
+
+<h1 class="page-title">Scan History</h1>
+<div class="card">
+
+<table>
+    ...
+</table>
+
+</div>
+<input type="text" id="searchInput"
+placeholder="Search Threat..."
+style="width:100%; padding:10px; border-radius:10px; margin-bottom:20px;">
+
+<script>
+document.getElementById("searchInput").addEventListener("keyup", function() {
+    let value = this.value.toLowerCase();
+    let rows = document.querySelectorAll("table tbody tr");
+
+    rows.forEach(row => {
+        row.style.display = row.innerText.toLowerCase().includes(value) ? "" : "none";
+    });
+});
+</script>
+<table>
+<tr>
+    <th>Input</th>
+    <th>Threat Type</th>
+    <th>Risk Score</th>
+    <th>Date</th>
+</tr>
+
+{% for row in history %}
+<tr>
+    <td>{{ row[0] }}</td>
+    <td>{{ row[1] }}</td>
+    <td>{{ row[2] }}%</td>
+    <td>{{ row[3] }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>

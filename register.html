@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Threat Register</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#001845,#003B8F,#005EDC,#009DFF);
+}
+
+.register-box{
+    width:420px;
+    background:#0A2F73;
+    border:2px solid #00E5FF;
+    border-radius:20px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 0 25px rgba(0,229,255,.6);
+}
+
+.register-logo{
+    width:80px;
+    height:80px;
+    display:block;
+    margin:0 auto 15px;
+    object-fit:contain;
+}
+
+h2{
+    color:#00E5FF;
+    margin-bottom:8px;
+    font-size:30px;
+}
+
+.sub-title{
+    color:white;
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    margin:12px 0;
+    border:none;
+    border-radius:10px;
+    background:#F4FAFF;
+    font-size:15px;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    margin-top:15px;
+    background:#00D9FF;
+    color:#002147;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#00FFFF;
+}
+
+p{
+    margin-top:20px;
+    color:white;
+}
+
+a{
+    color:#00E5FF;
+    text-decoration:none;
+    font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="register-box">
+
+<img src="{{ url_for('static', filename='logo.png') }}" class="register-logo">
+
+<h2>Create Account</h2>
+<p class="sub-title">AI Powered Security System</p>
+
+<form action="/register" method="POST">
+
+<input type="text" name="username" placeholder="Enter Username" required>
+
+<input type="email" name="email" placeholder="Enter Email Address" required>
+
+<input type="password" name="password" placeholder="Create Password" required>
+
+<button type="submit">Register</button>
+
+</form>
+
+<p>Already have an account? <a href="/login">Login</a></p>
+
+</div>
+
+</body>
+</html>

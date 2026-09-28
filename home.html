@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cyber Threat Detector</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        
+
+        /* Navbar */
+
+        body{
+    background:linear-gradient(rgba(0,18,55,0.75),rgba(0,18,55,0.85)),
+               url("{{ url_for('static', filename='home_bg.png') }}");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    color:white;
+}
+    
+        
+            .navbar{
+    width:100%;
+    background:#071B3A;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 60px;
+}
+        
+
+        .logo{
+            display:flex;
+            align-items:center;
+            gap:15px;
+        }
+
+        .logo img{
+            width:60px;
+        }
+
+        .logo h2{
+            color:#2ec7ff;
+            font-size:28px;
+        }
+
+        .logo p{
+            font-size:14px;
+            color:#ddd;
+        }
+
+        .menu a{
+            color:white;
+            text-decoration:none;
+            margin-left:30px;
+            font-weight:bold;
+            transition:0.3s;
+        }
+        .shield{
+    width:470px;
+    filter: drop-shadow(0 0 35px #00bfff);
+}
+
+        .menu a:hover{
+            color:#2ec7ff;
+        }
+
+        /* Hero */
+
+        .hero{
+    min-height:90vh;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:60px 70px;
+}
+
+.left{
+    width:55%;
+}
+
+.left h4{
+    color:#2ec7ff;
+    letter-spacing:4px;
+    font-size:18px;
+    margin-bottom:20px;
+}
+
+.left h1{
+    font-size:62px;
+    line-height:1.1;
+    color:white;
+    margin-bottom:25px;
+}
+
+.left h1 span{
+    color:#00cfff;
+}
+
+.left p{
+    color:#d6e8ff;
+    font-size:22px;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+.buttons{
+    display:flex;
+    gap:20px;
+}
+
+.btn{
+    padding:16px 35px;
+    border-radius:10px;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.login{
+    background:#00aaff;
+    color:white;
+}
+
+.register{
+    border:2px solid #00aaff;
+    color:white;
+}
+
+.right{
+    width:40%;
+    text-align:center;
+}
+
+.shield{
+    width:380px;
+    margin-bottom:25px;
+    filter:drop-shadow(0 0 30px #00bfff);
+}
+
+.threats{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.box{
+    background:rgba(255,255,255,0.08);
+    border:1px solid #2ec7ff;
+    border-radius:12px;
+    color:white;
+    padding:18px;
+    font-size:17px;
+    text-align:center;
+}
+
+        /* Features */
+
+        .features{
+            display:flex;
+            justify-content:space-around;
+            flex-wrap:wrap;
+            gap:20px;
+            padding:40px 20px;
+            background:rgba(0,0,0,0.6);
+        }
+
+        .feature{
+            width:220px;
+            text-align:center;
+            padding:20px;
+        }
+
+        .feature h3{
+            color:#2ec7ff;
+            margin:15px 0;
+        }
+
+        footer{
+            background:#00162f;
+            text-align:center;
+            padding:20px;
+            color:#ddd;
+        }
+
+        @media(max-width:900px){
+
+            .hero{
+    min-height:90vh;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:60px;
+    background: rgba(0,0,40,0.35);
+}
+            .left,.right{
+                width:100%;
+            }
+
+            .right img{
+                width:280px;
+                margin-top:30px;
+            }
+
+            .navbar{
+                flex-direction:column;
+                gap:20px;
+            }
+
+            .menu a{
+                margin:10px;
+            }
+
+            .threats{
+                justify-content:center;
+                grid-template-columns:1fr 1fr;
+            }
+            
+        }
+
+    </style>
+
+</head>
+
+<body>
+    
+
+    <img src="{{ url_for('static', filename='logo.png') }}" width="70" height="70">
+    
+
+    <!-- Navbar -->
+
+    <div class="navbar">
+
+        <div class="logo">
+
+            
+            <div>
+                <h2>Cyber Threat Detector</h2>
+                <p>AI Powered Security System</p>
+            </div>
+
+        </div>
+
+        <div class="menu">
+            <a href="/">Home</a>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+            <a href="#about">About</a>
+        </div>
+
+    </div>
+
+    <!-- Hero -->
+
+    <section class="hero">
+
+    <!-- Left Content -->
+    <div class="left">
+
+        <h4>DETECT • ANALYZE • RESPOND</h4>
+
+        <h1>
+            <span>AI Powered</span><br>
+            Cyber Threat Detection and Response System
+        </h1>
+
+        <p>
+            Protecting users from cyber threats using Artificial Intelligence.
+            Detect phishing URLs, malicious emails, suspicious IP addresses,
+            ransomware and other cyber threats instantly.
+        </p>
+
+        <div class="buttons">
+            <a href="/login" class="btn login">🔐 Login</a>
+            <a href="/register" class="btn register">👤 Register</a>
+        </div>
+
+    </div>
+
+    <!-- Right Content -->
+    <div class="right">
+
+        <img src="{{ url_for('static', filename='shield.png') }}" class="shield">
+
+        <div class="threats">
+            <div class="box">🌐 Suspicious URL</div>
+            <div class="box">💬 Malicious Message</div>
+            <div class="box">📧 Phishing Email</div>
+            <div class="box">📍 IP Address</div>
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- Features -->
+
+    <section class="features" id="about">
+
+        <div class="feature">
+            <h3>🛡 Real-Time Detection</h3>
+            <p>Detect cyber threats instantly using AI analysis.</p>
+        </div>
+
+        <div class="feature">
+            <h3>⚡ Quick Response</h3>
+            <p>Automatically alert and respond to suspicious activities.</p>
+        </div>
+
+        <div class="feature">
+            <h3>💾 Secure Database</h3>
+            <p>Store scan history safely in MySQL database.</p>
+        </div>
+
+        <div class="feature">
+            <h3>📊 Analytics</h3>
+            <p>View cyber threat reports and statistics dashboard.</p>
+        </div>
+
+        <div class="feature">
+            <h3>📄 PDF Reports</h3>
+            <p>Download complete scan history as PDF reports.</p>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+
+    <footer>
+        <h1>
+    <span style="color:#00C6FF;">AI Powered</span><br>
+    <span style="color:white;">Cyber Threat Detection and Response System</span>
+</h1>
+        <p>Developed by Poojalakshmi U</p>
+        <p>© 2026 Final Year Project | Flask + Python + MySQL</p>
+    </footer>
+
+</body>
+</html>
